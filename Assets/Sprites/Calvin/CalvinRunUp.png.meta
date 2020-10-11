@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: b5d70feca0df6014abf5f549f44fef66
+guid: 1ad48c5f7c73a5b43b3e52324385bac9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7953525276496125936
-    second: CalvinWalkDown_0
+      213: -8279462682967830004
+    second: CalvinRunUp_0
   - first:
-      213: 8545661498171890694
-    second: CalvinWalkDown_1
+      213: -1750014558842645807
+    second: CalvinRunUp_1
   - first:
-      213: 8730169271976316910
-    second: CalvinWalkDown_2
+      213: -490040075764008199
+    second: CalvinRunUp_2
   - first:
-      213: -6246109885925264266
-    second: CalvinWalkDown_3
+      213: -275429208831608294
+    second: CalvinRunUp_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -73,10 +73,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
-    resizeAlgorithm: 1
-    textureFormat: 4
-    textureCompression: 1
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,10 +85,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
-    resizeAlgorithm: 1
-    textureFormat: 4
-    textureCompression: 1
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CalvinWalkDown_0
+      name: CalvinRunUp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff54a17919906e60800000000000000
-      internalID: 7953525276496125936
+      spriteID: c02999a6e80791d80800000000000000
+      internalID: -8279462682967830004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CalvinWalkDown_1
+      name: CalvinRunUp_1
       rect:
         serializedVersion: 2
         x: 64
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c94411bd9489670800000000000000
-      internalID: 8545661498171890694
+      spriteID: 1d21c6cd703b6b7e0800000000000000
+      internalID: -1750014558842645807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CalvinWalkDown_2
+      name: CalvinRunUp_2
       rect:
         serializedVersion: 2
         x: 128
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eefcd2dc2bac72970800000000000000
-      internalID: 8730169271976316910
+      spriteID: 9fa716eb5270339f0800000000000000
+      internalID: -490040075764008199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CalvinWalkDown_3
+      name: CalvinRunUp_3
       rect:
         serializedVersion: 2
         x: 192
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6747e5de62c5159a0800000000000000
-      internalID: -6246109885925264266
+      spriteID: a1a33d6089a7d2cf0800000000000000
+      internalID: -275429208831608294
       vertices: []
       indices: 
       edges: []

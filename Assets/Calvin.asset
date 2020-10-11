@@ -12,18 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa0e137b33202847a670671fd06f053, type: 3}
   m_Name: Calvin
   m_EditorClassIdentifier: 
-  gravityEnabled: 0
-  flyEnabled: 0
-  AirControlEnabled: 0
-  maxJumpHeight: 4
-  minJumpHeight: 1
-  timeToJumpApex: 0.4
-  accelerationTimeAirborne: 0.2
-  accelerationTimeGrounded: 0.1
-  moveSpeed: 20
-  wallJumpsEnabled: 0
-  wallJumpClimb: {x: 7.5, y: 16}
-  wallJumpOff: {x: 8.5, y: 7}
-  wallLeap: {x: 18, y: 17}
-  wallSlideSpeedMax: 3
-  wallStickTime: 0.25
+  walkingSpeed: 4
+  runningSpeed: 8

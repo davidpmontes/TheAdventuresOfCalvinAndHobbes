@@ -24,8 +24,8 @@ public class MovingObject : MonoBehaviour
 
     public void CalculateVelocity(Vector2 directionalInput)
     {
-        float targetVelocityX = directionalInput.x * config.moveSpeed;
-        float targetVelocityY = directionalInput.y * config.moveSpeed;
+        float targetVelocityX = directionalInput.x * config.walkingSpeed;
+        float targetVelocityY = directionalInput.y * config.walkingSpeed;
 
         velocity.x = Mathf.SmoothDamp(velocity.x,
                               targetVelocityX,
@@ -38,8 +38,8 @@ public class MovingObject : MonoBehaviour
                               Time.deltaTime);
     }
 
-    public void Move()
+    public void Move(float speed)
     {
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * speed * Time.deltaTime);
     }
 }

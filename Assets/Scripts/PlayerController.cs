@@ -2,7 +2,7 @@
 
 public class PlayerController : MonoBehaviour
 {
-    private enum WALK_TYPE
+    private enum DIRECTION
     {
         LEFT_RIGHT,
         DOWN,
@@ -10,11 +10,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector2 leftStickInput;
+    private bool runInput;
+
     private UnityEngine.InputSystem.PlayerInput playerInput;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private WALK_TYPE walkType;
+    private DIRECTION direction = DIRECTION.DOWN;
     private MovingObject movingObject;
+
+    public UnityEngine.InputSystem.InputAction fireAction;
 
     [SerializeField] private MovingObjectConfig config = default;
     [SerializeField] private float moveSpeed = default;
@@ -33,19 +37,30 @@ public class PlayerController : MonoBehaviour
         GetInput();
         FlipX();
         UpdateAnimator();
+    }
+
+    private void FixedUpdate()
+    {
+        float speed = runInput ? config.runningSpeed : config.walkingSpeed;
+
         movingObject.CalculateVelocity(leftStickInput);
-        movingObject.Move();
+        movingObject.Move(speed);
     }
 
     private void GetInput()
     {
         leftStickInput = playerInput.actions["Move"].ReadValue<Vector2>();
+        runInput = playerInput.actions["Run"].ReadValue<float>() > 0;
+    }
+
+    public void OnFire()
+    {
+        animator.SetTrigger("fire");
     }
 
     private void FlipX()
     {
-
-        if (walkType == WALK_TYPE.LEFT_RIGHT)
+        if (direction == DIRECTION.LEFT_RIGHT)
         {
             if (Mathf.Abs(leftStickInput.x) > 0.1f)
             {
@@ -60,30 +75,33 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimator()
     {
+        animator.SetBool("isIdle", leftStickInput.magnitude == 0);
+
         if (leftStickInput.magnitude > 0)
-            animator.speed = 1;
-        else
-            animator.speed = 0;
-
-        if (leftStickInput.magnitude == 0)
-            return;
-
-        if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
         {
-            walkType = WALK_TYPE.LEFT_RIGHT;
-        }
-        else
-        {
-            if (leftStickInput.y > 0)
+            animator.SetBool("canRun", runInput);
+
+            if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
             {
-                walkType = WALK_TYPE.UP;
+                direction = DIRECTION.LEFT_RIGHT;
             }
             else
             {
-                walkType = WALK_TYPE.DOWN;
+                if (leftStickInput.y > 0)
+                {
+                    direction = DIRECTION.UP;
+                }
+                else
+                {
+                    direction = DIRECTION.DOWN;
+                }
             }
         }
+        else
+        {
+            animator.SetBool("canRun", false);
+        }
 
-        animator.SetInteger("walkType", (int)walkType);
+        animator.SetInteger("direction", (int)direction);
     }
 }
