@@ -15,22 +15,22 @@ public class Balloon : MonoBehaviour
         switch(dir)
         {
             case DIRECTION.LEFT:
-                transform.position = pos + new Vector2(0, 5);
+                transform.position = pos + new Vector2(1, 4);
                 transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 180);
                 StartCoroutine(ThrowLeft());
                 break;
             case DIRECTION.RIGHT:
-                transform.position = pos + new Vector2(0, 5);
+                transform.position = pos + new Vector2(-1, 4);
                 transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 0);
                 StartCoroutine(ThrowRight());
                 break;
             case DIRECTION.UP:
-                transform.position = pos + new Vector2(1, 4);
+                transform.position = pos + new Vector2(1, 5);
                 transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 90);
                 StartCoroutine(ThrowUp());
                 break;
             case DIRECTION.DOWN:
-                transform.position = pos + new Vector2(-1, 4);
+                transform.position = pos + new Vector2(-1, 3);
                 transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, 270);
                 StartCoroutine(ThrowDown());
                 break;
@@ -45,7 +45,7 @@ public class Balloon : MonoBehaviour
         while(Time.time < endTime)
         {
             transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
-            dir.y -= 5f * Time.deltaTime;
+            dir.y -= 5.5f * Time.deltaTime;
             yield return null;
         }
         StartCoroutine(WaterExplode());
@@ -59,7 +59,7 @@ public class Balloon : MonoBehaviour
         while (Time.time < endTime)
         {
             transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
-            dir.y -= 5f * Time.deltaTime;
+            dir.y -= 5.5f * Time.deltaTime;
             yield return null;
         }
         StartCoroutine(WaterExplode());

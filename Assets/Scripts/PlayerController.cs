@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (direction == DIRECTION.LEFT || direction == DIRECTION.RIGHT)
         {
-            if (Mathf.Abs(leftStickInput.x) > 0.1f)
+            if (Mathf.Abs(leftStickInput.x) != 0.0f)
             {
                 spriteRenderer.flipX = leftStickInput.x < 0;
             }
