@@ -9,7 +9,7 @@ public class Controller2D : RaycastController
         base.Awake();
     }
 
-    public void Move(Vector2 velocity)
+    public Vector2 Move(Vector2 velocity)
     {
         UpdateRaycastOrigins();
         collisions.Reset();
@@ -18,6 +18,8 @@ public class Controller2D : RaycastController
         VerticalCollisions(ref velocity);
 
         transform.Translate(velocity);
+
+        return velocity;
     }
 
     private void HorizontalCollisions(ref Vector2 velocity)

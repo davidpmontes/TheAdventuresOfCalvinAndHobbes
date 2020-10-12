@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    [SerializeField] private GameObject waterExplodePrefab;
+    [SerializeField] private GameObject waterExplodePrefab = default;
     private float throwDuration = 0.5f;
     private float throwSpeed = 20f;
     private Vector2 initVel;
 
     public void Init(Vector2 pos, Vector2 vel, DIRECTION dir)
     {
+        Debug.Log("init: " + vel);
         initVel = vel;
 
         switch(dir)
@@ -44,9 +45,9 @@ public class Balloon : MonoBehaviour
 
         while(Time.time < endTime)
         {
-            transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
+            transform.Translate(initVel + dir * throwSpeed * Time.deltaTime);
             dir.y -= 5.5f * Time.deltaTime;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         StartCoroutine(WaterExplode());
     }
@@ -58,9 +59,9 @@ public class Balloon : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
+            transform.Translate(initVel + dir * throwSpeed * Time.deltaTime);
             dir.y -= 5.5f * Time.deltaTime;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         StartCoroutine(WaterExplode());
     }
@@ -72,8 +73,8 @@ public class Balloon : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
-            yield return null;
+            transform.Translate(initVel + dir * throwSpeed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
         }
         StartCoroutine(WaterExplode());
     }
@@ -85,8 +86,8 @@ public class Balloon : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            transform.Translate((initVel + (dir * throwSpeed)) * Time.deltaTime);
-            yield return null;
+            transform.Translate(initVel + dir * throwSpeed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
         }
         StartCoroutine(WaterExplode());
     }

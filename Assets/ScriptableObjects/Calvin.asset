@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa0e137b33202847a670671fd06f053, type: 3}
   m_Name: Calvin
   m_EditorClassIdentifier: 
-  walkingSpeed: 4
-  runningSpeed: 8
+  walkingSpeed: 15
+  runningSpeed: 30

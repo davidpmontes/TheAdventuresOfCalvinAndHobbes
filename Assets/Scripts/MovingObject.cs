@@ -8,39 +8,25 @@ public class MovingObject : MonoBehaviour
 {
     private MovingObjectConfig config;
     private Controller2D controller;
-    private Vector2 velocity;
-    private float velocityXSmoothing;
-    private float velocityYSmoothing;
+    private Vector2 targetVelocity;
+    private Vector2 adjustedVelocity;
 
     private void Awake()
     {
         controller = GetComponent<Controller2D>();
     }
 
-    public Vector2 GetVelocity() => velocity;
+    public Vector2 GetTargetVelocity() => targetVelocity;
+    public Vector2 GetAdjustedVelocity() => adjustedVelocity;
     public void AssignConfiguration(MovingObjectConfig newConfig)
     {
         config = newConfig;
     }
 
-    public void CalculateVelocity(Vector2 directionalInput)
+
+    public void Move(Vector2 directionalInput, float speed)
     {
-        float targetVelocityX = directionalInput.x * config.walkingSpeed;
-        float targetVelocityY = directionalInput.y * config.walkingSpeed;
-
-        velocity.x = Mathf.SmoothDamp(velocity.x,
-                              targetVelocityX,
-                              ref velocityXSmoothing,
-                              Time.deltaTime);
-
-        velocity.y = Mathf.SmoothDamp(velocity.y,
-                              targetVelocityY,
-                              ref velocityYSmoothing,
-                              Time.deltaTime);
-    }
-
-    public void Move(float speed)
-    {
-        controller.Move(velocity * speed * Time.deltaTime);
+        targetVelocity = directionalInput * speed * Time.deltaTime;
+        adjustedVelocity = controller.Move(targetVelocity);
     }
 }

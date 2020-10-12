@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
-    [SerializeField] private GameObject balloonPrefab;
+    [SerializeField] private GameObject balloonPrefab = default;
 
     private Vector2 leftStickInput;
     private bool runInput;
@@ -49,9 +49,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         speed = runInput ? config.runningSpeed : config.walkingSpeed;
-
-        movingObject.CalculateVelocity(leftStickInput);
-        movingObject.Move(speed);
+        movingObject.Move(leftStickInput, speed);
     }
 
     private void GetInput()
@@ -120,6 +118,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         var balloon = Instantiate(balloonPrefab, null);
-        balloon.GetComponent<Balloon>().Init(transform.position, movingObject.GetVelocity() * speed, direction);
+        balloon.GetComponent<Balloon>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
     }
 }
