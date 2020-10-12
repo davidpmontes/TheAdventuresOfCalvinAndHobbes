@@ -17,6 +17,7 @@ public class MovingObject : MonoBehaviour
         controller = GetComponent<Controller2D>();
     }
 
+    public Vector2 GetVelocity() => velocity;
     public void AssignConfiguration(MovingObjectConfig newConfig)
     {
         config = newConfig;
