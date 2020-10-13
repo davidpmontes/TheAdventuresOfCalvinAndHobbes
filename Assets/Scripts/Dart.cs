@@ -25,13 +25,13 @@ public class Dart : MonoBehaviour
                 StartCoroutine(Shoot(new Vector2(1, 0)));
                 break;
             case DIRECTION.UP:
-                transform.position = pos + new Vector2(0f, 5);
+                transform.position = pos + new Vector2(-0.1f, 5);
                 transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[3];
                 initVel = new Vector2(0, vel.y);
                 StartCoroutine(Shoot(new Vector2(0, 1)));
                 break;
             case DIRECTION.DOWN:
-                transform.position = pos + new Vector2(0f, 1.5f);
+                transform.position = pos + new Vector2(-0.1f, 1.5f);
                 transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[2];
                 initVel = new Vector2(0, vel.y);
                 StartCoroutine(Shoot(new Vector2(0, -1)));
