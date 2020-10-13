@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum DIRECTION
 {
@@ -9,22 +8,22 @@ public enum DIRECTION
     UP
 }
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
-    [SerializeField] private GameObject balloonPrefab = default;
-
     private Vector2 leftStickInput;
     private bool runInput;
+    private bool aimLockInput;
 
     private UnityEngine.InputSystem.PlayerInput playerInput;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private DIRECTION direction = DIRECTION.DOWN;
-    private MovingObject movingObject;
 
-    public UnityEngine.InputSystem.InputAction fireAction;
+    protected DIRECTION direction = DIRECTION.DOWN;
+    protected MovingObject movingObject;
+
 
     [SerializeField] private MovingObjectConfig config = default;
     private float speed;
@@ -56,16 +55,18 @@ public class PlayerController : MonoBehaviour
     {
         leftStickInput = playerInput.actions["Move"].ReadValue<Vector2>();
         runInput = playerInput.actions["Run"].ReadValue<float>() > 0;
+        aimLockInput = playerInput.actions["AimLock"].ReadValue<float>() > 0;
     }
 
-    public void OnFire()
+    public virtual void OnAttack()
     {
-        animator.SetTrigger("fire");
-        StartCoroutine(Throw());
+        animator.SetTrigger("attack");
     }
 
     private void FlipX()
     {
+        if (aimLockInput) return;
+
         if (direction == DIRECTION.LEFT || direction == DIRECTION.RIGHT)
         {
             if (Mathf.Abs(leftStickInput.x) != 0.0f)
@@ -87,22 +88,25 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("canRun", runInput);
 
-            if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
+            if (!aimLockInput)
             {
-                if (leftStickInput.x > 0)
-                    direction = DIRECTION.RIGHT;
-                else
-                    direction = DIRECTION.LEFT;
-            }
-            else
-            {
-                if (leftStickInput.y > 0)
+                if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
                 {
-                    direction = DIRECTION.UP;
+                    if (leftStickInput.x > 0)
+                        direction = DIRECTION.RIGHT;
+                    else
+                        direction = DIRECTION.LEFT;
                 }
                 else
                 {
-                    direction = DIRECTION.DOWN;
+                    if (leftStickInput.y > 0)
+                    {
+                        direction = DIRECTION.UP;
+                    }
+                    else
+                    {
+                        direction = DIRECTION.DOWN;
+                    }
                 }
             }
         }
@@ -112,12 +116,5 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetInteger("direction", (int)direction);
-    }
-
-    public IEnumerator Throw()
-    {
-        yield return new WaitForSeconds(0.2f);
-        var balloon = Instantiate(balloonPrefab, null);
-        balloon.GetComponent<Balloon>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
     }
 }
