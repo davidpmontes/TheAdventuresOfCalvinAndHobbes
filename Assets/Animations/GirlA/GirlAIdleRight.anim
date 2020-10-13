@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ThrowUp
+  m_Name: GirlAIdleRight
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 7797449844632592654, guid: ae305fa8c78f5af479269fa1806e0073,
-        type: 3}
-    - time: 0.16666667
-      value: {fileID: -6402761276381384497, guid: ae305fa8c78f5af479269fa1806e0073,
-        type: 3}
-    - time: 0.25
-      value: {fileID: -108504219827334, guid: ae305fa8c78f5af479269fa1806e0073, type: 3}
-    - time: 0.41666666
-      value: {fileID: 7797449844632592654, guid: ae305fa8c78f5af479269fa1806e0073,
+      value: {fileID: 4908855272219583031, guid: 07b1918d658f47341997d7e52e318960,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -49,16 +41,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 7797449844632592654, guid: ae305fa8c78f5af479269fa1806e0073, type: 3}
-    - {fileID: -6402761276381384497, guid: ae305fa8c78f5af479269fa1806e0073, type: 3}
-    - {fileID: -108504219827334, guid: ae305fa8c78f5af479269fa1806e0073, type: 3}
-    - {fileID: 7797449844632592654, guid: ae305fa8c78f5af479269fa1806e0073, type: 3}
+    - {fileID: 4908855272219583031, guid: 07b1918d658f47341997d7e52e318960, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
