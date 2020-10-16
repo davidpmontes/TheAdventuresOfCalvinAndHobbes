@@ -5,7 +5,7 @@ public class Dart : MonoBehaviour
 {
     [SerializeField] private Sprite[] sprites = default;
     private float duration = 2f;
-    private float speed = 30f;
+    private float speed = 35f;
     private Vector2 initVel;
 
     public void Init(Vector2 pos, Vector2 vel, DIRECTION dir)

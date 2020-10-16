@@ -7,7 +7,21 @@ public class CalvinController : PlayerController
 
     public override void OnAttack()
     {
-        base.OnAttack();
+        if (isAttacking) return;
+        isAttacking = true;
+        switch (direction)
+        {
+            case DIRECTION.UP:
+                ChangeAnimationState(ATTACK_UP);
+                break;
+            case DIRECTION.DOWN:
+                ChangeAnimationState(ATTACK_DOWN);
+                break;
+            case DIRECTION.LEFT:
+            case DIRECTION.RIGHT:
+                ChangeAnimationState(ATTACK_RIGHT);
+                break;
+        }
         StartCoroutine(Throw());
     }
 
@@ -16,9 +30,7 @@ public class CalvinController : PlayerController
         yield return new WaitForSeconds(0.2f);
         var balloon = Instantiate(balloonPrefab, null);
         balloon.GetComponent<Balloon>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
-    }
-
-    public override void AnimatorAttack()
-    {
+        yield return new WaitForSeconds(0.233f);
+        isAttacking = false;
     }
 }

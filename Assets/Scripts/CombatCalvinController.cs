@@ -6,7 +6,6 @@ public class CombatCalvinController : PlayerController
 
     public override void OnAttack()
     {
-        base.OnAttack();
         Shoot();
     }
 
@@ -14,9 +13,5 @@ public class CombatCalvinController : PlayerController
     {
         var dart = Instantiate(dartPrefab, null);
         dart.GetComponent<Dart>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
-    }
-
-    public override void AnimatorAttack()
-    {
     }
 }

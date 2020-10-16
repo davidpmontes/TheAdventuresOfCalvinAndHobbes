@@ -13,8 +13,19 @@ public class NPCController : MonoBehaviour
     private float timeOfLastMove;
     private bool justMoved;
 
+    protected const string IDLE_UP = "IdleUp";
+    protected const string IDLE_DOWN = "IdleDown";
+    protected const string IDLE_RIGHT = "IdleRight";
+    protected const string WALK_UP = "WalkUp";
+    protected const string WALK_DOWN = "WalkDown";
+    protected const string WALK_RIGHT = "WalkRight";
+
     [SerializeField] private MovingObjectConfig config = default;
     private float speed;
+
+    private string currentState;
+    protected bool isIdle;
+
 
     private void Awake()
     {
@@ -28,7 +39,7 @@ public class NPCController : MonoBehaviour
     {
         GetInput();
         FlipX();
-        UpdateAnimator();
+        //UpdateAnimator();
     }
 
     private void FixedUpdate()
@@ -45,7 +56,7 @@ public class NPCController : MonoBehaviour
             if (justMoved)
             {
                 leftStickInput = Vector2.zero;
-                animator.SetBool("isIdle", true);
+                isIdle = true;
             }
             else
             {
@@ -53,14 +64,14 @@ public class NPCController : MonoBehaviour
                 if (Random.value < .25f)
                 {
                     speed = 0;
-                    animator.SetBool("isIdle", true);
+                    isIdle = true;
                 }
                 else
                 {
                     speed = config.walkingSpeed;
-                    animator.SetBool("isIdle", false);
+                    isIdle = false;
                 }
-                animator.SetInteger("direction", (int)randDir);
+                direction = randDir;
 
                 switch (randDir)
                 {
@@ -80,6 +91,7 @@ public class NPCController : MonoBehaviour
             }
 
             justMoved = !justMoved;
+            AnimatorDirection();
         }
     }
 
@@ -98,31 +110,45 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    private void UpdateAnimator()
+    protected void ChangeAnimationState(string newState)
     {
-        if (leftStickInput.magnitude > 0)
+        if (currentState == newState) return;
+        animator.Play(newState);
+        currentState = newState;
+    }
+
+    virtual public void AnimatorDirection()
+    {
+        if (isIdle)
         {
-            if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
+            switch (direction)
             {
-                if (leftStickInput.x > 0)
-                {
-                    direction = DIRECTION.RIGHT;
-                }
-                else
-                {
-                    direction = DIRECTION.LEFT;
-                }
+                case DIRECTION.UP:
+                    ChangeAnimationState(IDLE_UP);
+                    break;
+                case DIRECTION.DOWN:
+                    ChangeAnimationState(IDLE_DOWN);
+                    break;
+                case DIRECTION.LEFT:
+                case DIRECTION.RIGHT:
+                    ChangeAnimationState(IDLE_RIGHT);
+                    break;
             }
-            else
+        }
+        else
+        {
+            switch (direction)
             {
-                if (leftStickInput.y > 0)
-                {
-                    direction = DIRECTION.UP;
-                }
-                else
-                {
-                    direction = DIRECTION.DOWN;
-                }
+                case DIRECTION.UP:
+                    ChangeAnimationState(WALK_UP);
+                    break;
+                case DIRECTION.DOWN:
+                    ChangeAnimationState(WALK_DOWN);
+                    break;
+                case DIRECTION.LEFT:
+                case DIRECTION.RIGHT:
+                    ChangeAnimationState(WALK_RIGHT);
+                    break;
             }
         }
     }

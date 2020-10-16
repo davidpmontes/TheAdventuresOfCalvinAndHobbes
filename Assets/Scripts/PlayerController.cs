@@ -26,6 +26,7 @@ public abstract class PlayerController : MonoBehaviour
     protected const string ATTACK_RIGHT = "AttackRight";
     protected bool canRun;
     protected bool isIdle;
+    protected bool isAttacking;
 
     private Vector2 leftStickInput;
     private bool runInput;
@@ -74,10 +75,7 @@ public abstract class PlayerController : MonoBehaviour
         aimLockInput = playerInput.actions["AimLock"].ReadValue<float>() > 0;
     }
 
-    public virtual void OnAttack()
-    {
-        AnimatorAttack();
-    }
+    public abstract void OnAttack();
 
     private void FlipX()
     {
@@ -135,7 +133,7 @@ public abstract class PlayerController : MonoBehaviour
             canRun = false;
         }
 
-        AnimatorDirection(direction);
+        AnimatorDirection();
     }
 
     protected void ChangeAnimationState(string newState)
@@ -145,8 +143,10 @@ public abstract class PlayerController : MonoBehaviour
         currentState = newState;
     }
 
-    virtual public void AnimatorDirection(DIRECTION direction)
+    virtual public void AnimatorDirection()
     {
+        if (isAttacking) return;
+
         if (canRun)
         {
             switch (direction)
@@ -199,5 +199,4 @@ public abstract class PlayerController : MonoBehaviour
             }
         }
     }
-    public abstract void AnimatorAttack();
 }
