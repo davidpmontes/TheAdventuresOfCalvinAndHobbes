@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CombatCalvinController : PlayerController
 {
@@ -15,5 +14,9 @@ public class CombatCalvinController : PlayerController
     {
         var dart = Instantiate(dartPrefab, null);
         dart.GetComponent<Dart>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
+    }
+
+    public override void AnimatorAttack()
+    {
     }
 }

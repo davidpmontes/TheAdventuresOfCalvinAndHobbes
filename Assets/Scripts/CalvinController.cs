@@ -17,4 +17,8 @@ public class CalvinController : PlayerController
         var balloon = Instantiate(balloonPrefab, null);
         balloon.GetComponent<Balloon>().Init(transform.position, movingObject.GetAdjustedVelocity(), direction);
     }
+
+    public override void AnimatorAttack()
+    {
+    }
 }

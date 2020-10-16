@@ -105,9 +105,13 @@ public class NPCController : MonoBehaviour
             if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
             {
                 if (leftStickInput.x > 0)
+                {
                     direction = DIRECTION.RIGHT;
+                }
                 else
+                {
                     direction = DIRECTION.LEFT;
+                }
             }
             else
             {

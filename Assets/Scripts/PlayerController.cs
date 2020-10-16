@@ -12,6 +12,21 @@ public abstract class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
+    protected const string IDLE_UP = "IdleUp";
+    protected const string IDLE_DOWN = "IdleDown";
+    protected const string IDLE_RIGHT = "IdleRight";
+    protected const string WALK_UP = "WalkUp";
+    protected const string WALK_DOWN = "WalkDown";
+    protected const string WALK_RIGHT = "WalkRight";
+    protected const string RUN_UP = "RunUp";
+    protected const string RUN_DOWN = "RunDown";
+    protected const string RUN_RIGHT = "RunRight";
+    protected const string ATTACK_UP = "AttackUp";
+    protected const string ATTACK_DOWN = "AttackDown";
+    protected const string ATTACK_RIGHT = "AttackRight";
+    protected bool canRun;
+    protected bool isIdle;
+
     private Vector2 leftStickInput;
     private bool runInput;
     private bool aimLockInput;
@@ -19,11 +34,12 @@ public abstract class PlayerController : MonoBehaviour
     private UnityEngine.InputSystem.PlayerInput playerInput;
 
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
-
+    
+    protected Animator animator;
     protected DIRECTION direction = DIRECTION.DOWN;
     protected MovingObject movingObject;
 
+    private string currentState;
 
     [SerializeField] private MovingObjectConfig config = default;
     private float speed;
@@ -60,7 +76,7 @@ public abstract class PlayerController : MonoBehaviour
 
     public virtual void OnAttack()
     {
-        animator.SetTrigger("attack");
+        AnimatorAttack();
     }
 
     private void FlipX()
@@ -82,20 +98,23 @@ public abstract class PlayerController : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        animator.SetBool("isIdle", leftStickInput.magnitude == 0);
-
         if (leftStickInput.magnitude > 0)
         {
-            animator.SetBool("canRun", runInput);
+            isIdle = false;
+            canRun = runInput;
 
             if (!aimLockInput)
             {
                 if (Mathf.Abs(leftStickInput.x) > Mathf.Abs(leftStickInput.y))
                 {
                     if (leftStickInput.x > 0)
+                    {
                         direction = DIRECTION.RIGHT;
+                    }
                     else
+                    {
                         direction = DIRECTION.LEFT;
+                    }
                 }
                 else
                 {
@@ -112,9 +131,73 @@ public abstract class PlayerController : MonoBehaviour
         }
         else
         {
-            animator.SetBool("canRun", false);
+            isIdle = true;
+            canRun = false;
         }
 
-        animator.SetInteger("direction", (int)direction);
+        AnimatorDirection(direction);
     }
+
+    protected void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+        animator.Play(newState);
+        currentState = newState;
+    }
+
+    virtual public void AnimatorDirection(DIRECTION direction)
+    {
+        if (canRun)
+        {
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    ChangeAnimationState(RUN_UP);
+                    break;
+                case DIRECTION.DOWN:
+                    ChangeAnimationState(RUN_DOWN);
+                    break;
+                case DIRECTION.LEFT:
+                case DIRECTION.RIGHT:
+                    ChangeAnimationState(RUN_RIGHT);
+                    break;
+            }
+        }
+        else
+        {
+            if (isIdle)
+            {
+                switch (direction)
+                {
+                    case DIRECTION.UP:
+                        ChangeAnimationState(IDLE_UP);
+                        break;
+                    case DIRECTION.DOWN:
+                        ChangeAnimationState(IDLE_DOWN);
+                        break;
+                    case DIRECTION.LEFT:
+                    case DIRECTION.RIGHT:
+                        ChangeAnimationState(IDLE_RIGHT);
+                        break;
+                }
+            }    
+            else
+            {
+                switch (direction)
+                {
+                    case DIRECTION.UP:
+                        ChangeAnimationState(WALK_UP);
+                        break;
+                    case DIRECTION.DOWN:
+                        ChangeAnimationState(WALK_DOWN);
+                        break;
+                    case DIRECTION.LEFT:
+                    case DIRECTION.RIGHT:
+                        ChangeAnimationState(WALK_RIGHT);
+                        break;
+                }
+            }
+        }
+    }
+    public abstract void AnimatorAttack();
 }

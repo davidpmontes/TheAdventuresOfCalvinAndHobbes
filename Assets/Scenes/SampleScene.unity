@@ -353,6 +353,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 186409685396797072, guid: 38fde70bff888704293257e48adaac26,
+        type: 3}
+      propertyPath: orthographic size
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 186409686249429304, guid: 38fde70bff888704293257e48adaac26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -432,6 +437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatCalvin
       objectReference: {fileID: 0}
+    - target: {fileID: 1451193903978249975, guid: 00190d44ea917a548a1a3eb2ee5324ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3476922161094553848, guid: 00190d44ea917a548a1a3eb2ee5324ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -486,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548914097185463519, guid: 00190d44ea917a548a1a3eb2ee5324ff,
+        type: 3}
+      propertyPath: orthographic size
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00190d44ea917a548a1a3eb2ee5324ff, type: 3}
