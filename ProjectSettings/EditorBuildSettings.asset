@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TankBattle.unity
+    guid: 240ad4d86c9e1b4458523e5bbce61661
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 53a35071a29f854408d29a245b4ece3f,
       type: 2}

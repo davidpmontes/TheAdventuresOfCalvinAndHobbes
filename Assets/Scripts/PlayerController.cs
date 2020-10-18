@@ -33,8 +33,6 @@ public abstract class PlayerController : MonoBehaviour
     private bool aimLockInput;
 
     private UnityEngine.InputSystem.PlayerInput playerInput;
-
-    private SpriteRenderer spriteRenderer;
     
     protected Animator animator;
     protected DIRECTION direction = DIRECTION.DOWN;
@@ -49,7 +47,6 @@ public abstract class PlayerController : MonoBehaviour
     {
         Instance = this;
         playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         movingObject = GetComponent<MovingObject>();
         movingObject.AssignConfiguration(config);
@@ -85,12 +82,12 @@ public abstract class PlayerController : MonoBehaviour
         {
             if (Mathf.Abs(leftStickInput.x) != 0.0f)
             {
-                spriteRenderer.flipX = leftStickInput.x < 0;
+                transform.localScale = new Vector3(leftStickInput.x < 0 ? -1: 1, 1, 1);
             }
         }
         else
         {
-            spriteRenderer.flipX = false;
+            transform.localScale = Vector3.one;
         }
     }
 
