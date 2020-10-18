@@ -44,7 +44,7 @@ public class NPCController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movingObject.Move(leftStickInput, speed);
+        //movingObject.Move(leftStickInput, speed);
     }
 
     private void GetInput()

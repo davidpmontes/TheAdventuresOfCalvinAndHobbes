@@ -62,7 +62,7 @@ public abstract class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         speed = runInput ? config.runningSpeed : config.walkingSpeed;
-        movingObject.Move(leftStickInput, speed);
+        //movingObject.Move(leftStickInput, speed);
     }
 
     private void GetInput()

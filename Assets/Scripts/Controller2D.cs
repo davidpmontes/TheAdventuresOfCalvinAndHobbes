@@ -9,17 +9,15 @@ public class Controller2D : RaycastController
         base.Awake();
     }
 
-    public Vector2 Move(Vector2 velocity)
+    public Vector2 CalculateAdjustedVelocity(Vector2 targetVelocity)
     {
         UpdateRaycastOrigins();
         collisions.Reset();
 
-        HorizontalCollisions(ref velocity);
-        VerticalCollisions(ref velocity);
+        HorizontalCollisions(ref targetVelocity);
+        VerticalCollisions(ref targetVelocity);
 
-        transform.Translate(PixelPerfectClamp.GetPixelPerfectClampV3(velocity, 16));
-
-        return velocity;
+        return targetVelocity;
     }
 
     private void HorizontalCollisions(ref Vector2 velocity)
@@ -32,8 +30,6 @@ public class Controller2D : RaycastController
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
-
-            //Debug.DrawRay(rayOrigin, Vector2.right * directionX, Color.red);
 
             if (hit)
             {
@@ -54,8 +50,6 @@ public class Controller2D : RaycastController
             rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
-            //Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.red);
-
             if (hit)
             {
                 velocity.y = (hit.distance - skinWidth) * directionY;
@@ -66,8 +60,7 @@ public class Controller2D : RaycastController
 
     public struct CollisionInfo
     {
-        public bool above, below;
-        public bool left, right;
+        public bool above, below, left, right;
 
         public void Reset()
         {

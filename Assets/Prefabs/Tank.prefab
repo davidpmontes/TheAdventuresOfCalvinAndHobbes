@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7350044547216668916}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044546119993893
 SpriteRenderer:
@@ -110,7 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7350044547216668916}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044546365331697
 SpriteRenderer:
@@ -191,7 +191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7350044547216668916}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044546447684289
 SpriteRenderer:
@@ -272,7 +272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7350044547216668916}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044546549963976
 SpriteRenderer:
@@ -353,7 +353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7350044547216668916}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044547164636908
 SpriteRenderer:
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 7350044547216668916}
   - component: {fileID: 7350044547216668875}
   m_Layer: 0
-  m_Name: TankBody
+  m_Name: TankSprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,13 +433,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7350044547995709892}
   - {fileID: 7350044546365331696}
   - {fileID: 7350044546549963983}
   - {fileID: 7350044547164636899}
   - {fileID: 7350044546119993892}
   - {fileID: 7350044546447684288}
   m_Father: {fileID: 7350044547839731012}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044547216668875
 SpriteRenderer:
@@ -506,6 +507,7 @@ GameObject:
   - component: {fileID: 8430932661314643088}
   - component: {fileID: 9086039214761515246}
   - component: {fileID: 8182005582686626625}
+  - component: {fileID: 8375358416442454101}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -524,7 +526,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7350044547995709892}
   - {fileID: 7350044547216668916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -586,7 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63adbcc77e7798042b9d9dce71cbd0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 084def9f0adff634c8c65718646c4d5d, type: 2}
 --- !u!114 &8430932661314643088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +650,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8a2abe2a655934dbe8d4951224b180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetVelocity: {x: 0, y: 0}
+--- !u!114 &8375358416442454101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7350044547839731034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63adbcc77e7798042b9d9dce71cbd0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7350044547995709915
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +691,7 @@ Transform:
   m_LocalPosition: {x: -0.625, y: 1.8125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7350044547839731012}
+  m_Father: {fileID: 7350044547216668916}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7350044547995709893

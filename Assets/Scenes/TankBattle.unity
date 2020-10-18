@@ -407,7 +407,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 6cfda48b14167214a8e9099969e9ed51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -25875,6 +25875,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982632931}
   m_CullTransparentMesh: 0
+--- !u!4 &2014871165 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7350044547216668916, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7350044546457575700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2095852331
 GameObject:
   m_ObjectHideFlags: 0
@@ -26020,12 +26026,12 @@ PrefabInstance:
     - target: {fileID: 6508230982055724872, guid: 127b32ee4d822b84bb38814cb0a3ff17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.13
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6508230982055724872, guid: 127b32ee4d822b84bb38814cb0a3ff17,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.88
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 6508230982055724872, guid: 127b32ee4d822b84bb38814cb0a3ff17,
         type: 3}
@@ -26076,7 +26082,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 7350044546457575701}
+      objectReference: {fileID: 2014871165}
     - target: {fileID: 6508230982055724876, guid: 127b32ee4d822b84bb38814cb0a3ff17,
         type: 3}
       propertyPath: m_Name
@@ -26104,12 +26110,12 @@ PrefabInstance:
     - target: {fileID: 7350044547839731012, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.313
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7350044547839731012, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.188
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 7350044547839731012, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
         type: 3}
@@ -26178,12 +26184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be, type: 3}
---- !u!4 &7350044546457575701 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7350044547839731012, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
-    type: 3}
-  m_PrefabInstance: {fileID: 7350044546457575700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8631587518479783789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26194,12 +26194,12 @@ PrefabInstance:
     - target: {fileID: 8631587517750354008, guid: 9be098b111b970340a93fef19b1a7897,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.976975
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8631587517750354008, guid: 9be098b111b970340a93fef19b1a7897,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.889798
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 8631587517750354008, guid: 9be098b111b970340a93fef19b1a7897,
         type: 3}
@@ -26249,27 +26249,7 @@ PrefabInstance:
     - target: {fileID: 8631587517750354009, guid: 9be098b111b970340a93fef19b1a7897,
         type: 3}
       propertyPath: orthographic size
-      value: 9.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 8631587517750354012, guid: 9be098b111b970340a93fef19b1a7897,
-        type: 3}
-      propertyPath: m_StretchFill
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8631587517750354012, guid: 9be098b111b970340a93fef19b1a7897,
-        type: 3}
-      propertyPath: m_CropFrameX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8631587517750354012, guid: 9be098b111b970340a93fef19b1a7897,
-        type: 3}
-      propertyPath: m_CropFrameY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8631587517750354012, guid: 9be098b111b970340a93fef19b1a7897,
-        type: 3}
-      propertyPath: m_PixelSnapping
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8631587517750354013, guid: 9be098b111b970340a93fef19b1a7897,
         type: 3}
