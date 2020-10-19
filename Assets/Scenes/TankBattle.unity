@@ -26182,6 +26182,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.62
       objectReference: {fileID: 0}
+    - target: {fileID: 8375358416442454101, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5671231473962611446, guid: 6b1f8e9d8f48fbb45b46624a4effef6e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc304ca4fa7a3c4b8a8ab30d68463be, type: 3}
 --- !u!1001 &8631587518479783789

@@ -25,7 +25,5 @@ public class MovingObject : MonoBehaviour
         adjustedVelocity = controller.CalculateAdjustedVelocity(targetVelocity);
         jitteryLocation += adjustedVelocity;
         tankSprites.transform.position = PixelPerfectClamp.GetPixelPerfectClampV3(jitteryLocation, 16);
-        if (adjustedVelocity.magnitude == 0)
-            Debug.Log(string.Format("zero: ({0}, {1})", directionalInput.x, directionalInput.y));
     }
 }
