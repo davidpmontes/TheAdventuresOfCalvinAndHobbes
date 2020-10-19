@@ -97,15 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fa1e69b12c6ca4c93dccba9374f8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DegreeNeg45: {fileID: 874343242196921964, guid: 5c4928a20139fb142b0bd620ba86a1a6,
+  Degree00: {fileID: -7803065417098437583, guid: 5c4928a20139fb142b0bd620ba86a1a6,
     type: 3}
-  DegreeNeg22: {fileID: -7976837497307082302, guid: 5c4928a20139fb142b0bd620ba86a1a6,
+  Degree22: {fileID: 7431529995326980795, guid: 5c4928a20139fb142b0bd620ba86a1a6,
     type: 3}
-  Degree0: {fileID: -7803065417098437583, guid: 5c4928a20139fb142b0bd620ba86a1a6,
-    type: 3}
-  DegreePos22: {fileID: 7431529995326980795, guid: 5c4928a20139fb142b0bd620ba86a1a6,
-    type: 3}
-  DegreePos45: {fileID: -7779215486825634471, guid: 5c4928a20139fb142b0bd620ba86a1a6,
+  Degree45: {fileID: -7779215486825634471, guid: 5c4928a20139fb142b0bd620ba86a1a6,
     type: 3}
   bulletTrailPrefab: {fileID: 1220351196264314102, guid: 21cfbdcff5ab8464caf0f8cfb16cb55a,
     type: 3}

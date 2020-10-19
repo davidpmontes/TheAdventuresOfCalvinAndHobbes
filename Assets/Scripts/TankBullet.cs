@@ -7,11 +7,9 @@ public class TankBullet : MonoBehaviour
     private float speed = 10;
     private Rigidbody2D rb;
 
-    [SerializeField] private Sprite DegreeNeg45;
-    [SerializeField] private Sprite DegreeNeg22;
-    [SerializeField] private Sprite Degree0;
-    [SerializeField] private Sprite DegreePos22;
-    [SerializeField] private Sprite DegreePos45;
+    [SerializeField] private Sprite Degree00 = default;
+    [SerializeField] private Sprite Degree22 = default;
+    [SerializeField] private Sprite Degree45 = default;
 
     [SerializeField] private GameObject bulletTrailPrefab = default;
 
@@ -35,8 +33,25 @@ public class TankBullet : MonoBehaviour
 
         if (hit)
         {
+            GetComponent<SpriteRenderer>().flipX = true;
             rb.velocity = hit.normal * speed;
             angle = Mathf.Abs(Mathf.Atan2(hit.normal.x, hit.normal.y) * Mathf.Rad2Deg);
+
+            var adjustedAngle = angle - 90;                        
+            if (adjustedAngle > 0) GetComponent<SpriteRenderer>().flipY = true;
+
+            if (Mathf.Abs(adjustedAngle) < 11.25f)
+            {
+                GetComponent<SpriteRenderer>().sprite = Degree00;
+            }
+            else if (Mathf.Abs(adjustedAngle) < 33.75f)
+            {
+                GetComponent<SpriteRenderer>().sprite = Degree22;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sprite = Degree45;
+            }
         }
     }
 

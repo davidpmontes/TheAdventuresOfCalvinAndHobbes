@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
@@ -6,7 +7,8 @@ public class TankController : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab = default;
     private GameObject tankSprites;
-    public GameObject barrel;
+    private GameObject barrel;
+    private GameObject blast;
 
     protected bool canRun;
     protected bool isIdle;
@@ -26,6 +28,7 @@ public class TankController : MonoBehaviour
     private string currentState;
 
     private float speed = 5f;
+    private Coroutine showhideBlast;
 
     private void Awake()
     {
@@ -33,9 +36,11 @@ public class TankController : MonoBehaviour
         jitteryLocation = transform.position;
         tankSprites = Utils.FindChildByNameRecursively(transform, "TankSprites");
         barrel = Utils.FindChildByNameRecursively(transform, "barrel");
+        blast = Utils.FindChildByNameRecursively(transform, "blast");
         playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         animator = GetComponent<Animator>();
         movingObject = GetComponent<MovingObject>();
+        blast.SetActive(false);
     }
 
     void Update()
@@ -57,8 +62,17 @@ public class TankController : MonoBehaviour
 
     public void OnAttack()
     {
+        if (showhideBlast != null) StopCoroutine(showhideBlast);
+        showhideBlast = StartCoroutine(ShowHideBlast());
         var bullet = Instantiate(bulletPrefab);
         bullet.GetComponent<TankBullet>().Init(barrel.transform.position);
+    }
+
+    private IEnumerator ShowHideBlast()
+    {
+        blast.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        blast.SetActive(false);
     }
 
     private void GetInput()
