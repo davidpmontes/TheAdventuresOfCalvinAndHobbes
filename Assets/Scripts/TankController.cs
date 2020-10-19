@@ -6,7 +6,7 @@ public class TankController : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab = default;
     private GameObject tankSprites;
-    private GameObject barrel;
+    public GameObject barrel;
 
     protected bool canRun;
     protected bool isIdle;

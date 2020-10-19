@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1220351196264314102
+--- !u!1 &719275824552170686
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9000724503661007674}
-  - component: {fileID: 7289855469356905914}
-  - component: {fileID: 1328689991409354875}
-  m_Layer: 0
-  m_Name: BulletsTrail
+  - component: {fileID: 719275824552170685}
+  - component: {fileID: 719275824552170684}
+  - component: {fileID: 719275824552170687}
+  - component: {fileID: -919906347949809375}
+  m_Layer: 11
+  m_Name: MissWormwood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9000724503661007674
+--- !u!4 &719275824552170685
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220351196264314102}
+  m_GameObject: {fileID: 719275824552170686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15.3, y: 30.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7289855469356905914
+--- !u!212 &719275824552170684
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220351196264314102}
+  m_GameObject: {fileID: 719275824552170686}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,37 +72,71 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1475284949851294775, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cfda48b14167214a8e9099969e9ed51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.25, y: 0.25}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1328689991409354875
-MonoBehaviour:
+--- !u!60 &719275824552170687
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220351196264314102}
+  m_GameObject: {fileID: 719275824552170686}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c3a985c9b784847b94e1fcb0d158ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Degree00: {fileID: -1475284949851294775, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
-  Degree22: {fileID: 8683756794382274347, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
-  Degree45: {fileID: -5892639499872942991, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
-  Degree67: {fileID: 6493806022397904458, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
-  Degree90: {fileID: 4008999507467174105, guid: 91c32cdc934e86b4ba5db6da60d30f1d,
-    type: 3}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 8}
+    newSize: {x: 8, y: 8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.1134853, y: 1.3700581}
+      - {x: 1.9670095, y: 0.1611824}
+      - {x: 1.4945555, y: 0.2768612}
+      - {x: 1.2711744, y: -1.4085045}
+      - {x: 1.320404, y: -2.6345043}
+      - {x: -1.2476625, y: -1.6603184}
+      - {x: -2.698821, y: -0.7331867}
+      - {x: -1.5385246, y: 1.372776}
+      - {x: -1.9763393, y: 1.6215992}
+      - {x: -1.5686607, y: 2.6513119}
+      - {x: -0.6286936, y: 2.2203865}
+--- !u!50 &-919906347949809375
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719275824552170686}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
