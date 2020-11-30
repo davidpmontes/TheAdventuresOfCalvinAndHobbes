@@ -33,10 +33,12 @@ public abstract class PlayerController : MonoBehaviour
     private bool aimLockInput;
 
     private UnityEngine.InputSystem.PlayerInput playerInput;
-    
+
+    private GameObject sprites;
     protected Animator animator;
     protected DIRECTION direction = DIRECTION.DOWN;
     protected MovingObject movingObject;
+    private Vector2 jitteryLocation;
 
     private string currentState;
 
@@ -47,6 +49,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         Instance = this;
         playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        sprites = Utils.FindChildByNameRecursively(transform, "Sprites");
         animator = GetComponent<Animator>();
         movingObject = GetComponent<MovingObject>();
         movingObject.AssignConfiguration(config);
@@ -62,7 +65,7 @@ public abstract class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         speed = runInput ? config.runningSpeed : config.walkingSpeed;
-        //movingObject.Move(leftStickInput, speed);
+        movingObject.MoveJittery(leftStickInput, speed, ref jitteryLocation, sprites);
     }
 
     private void GetInput()

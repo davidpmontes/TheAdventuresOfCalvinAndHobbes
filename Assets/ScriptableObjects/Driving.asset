@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0aa0e137b33202847a670671fd06f053, type: 3}
-  m_Name: Calvin
+  m_Name: Driving
   m_EditorClassIdentifier: 
-  walkingSpeed: 1
-  runningSpeed: 1
+  walkingSpeed: 15
+  runningSpeed: 30

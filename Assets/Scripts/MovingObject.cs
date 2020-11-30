@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Controller2D))]
 
@@ -19,11 +18,18 @@ public class MovingObject : MonoBehaviour
     public Vector2 GetTargetVelocity() => targetVelocity;
     public Vector2 GetAdjustedVelocity() => adjustedVelocity;
     public void AssignConfiguration(MovingObjectConfig newConfig) => config = newConfig;
-    public void Move(Vector2 directionalInput, float speed, ref Vector2 jitteryLocation, GameObject tankSprites)
+    public void MoveJittery(Vector2 directionalInput, float speed, ref Vector2 jitteryLocation, GameObject tankSprites)
     {
         targetVelocity = directionalInput * speed * Time.deltaTime;
         adjustedVelocity = controller.CalculateAdjustedVelocity(targetVelocity);
         jitteryLocation += adjustedVelocity;
         tankSprites.transform.position = PixelPerfectClamp.GetPixelPerfectClampV3(jitteryLocation, 16);
+    }
+
+    public void MoveSmoothly(Vector2 moveInput)
+    {
+        targetVelocity = moveInput * Time.deltaTime;
+        adjustedVelocity = controller.CalculateAdjustedVelocity(targetVelocity);
+        transform.position += (Vector3)adjustedVelocity;
     }
 }

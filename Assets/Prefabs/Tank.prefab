@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 7350044547216668916}
   - component: {fileID: 7350044547216668875}
   m_Layer: 0
-  m_Name: TankSprites
+  m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
-  barrel: {fileID: 0}
 --- !u!1 &7350044547995709915
 GameObject:
   m_ObjectHideFlags: 0

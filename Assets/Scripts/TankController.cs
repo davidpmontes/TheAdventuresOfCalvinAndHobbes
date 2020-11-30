@@ -6,7 +6,7 @@ public class TankController : MonoBehaviour
     public static TankController Instance { get; private set; }
 
     [SerializeField] private GameObject bulletPrefab = default;
-    private GameObject tankSprites;
+    private GameObject sprites;
     private GameObject barrel;
     private GameObject blast;
 
@@ -34,7 +34,7 @@ public class TankController : MonoBehaviour
     {
         Instance = this;
         jitteryLocation = transform.position;
-        tankSprites = Utils.FindChildByNameRecursively(transform, "TankSprites");
+        sprites = Utils.FindChildByNameRecursively(transform, "Sprites");
         barrel = Utils.FindChildByNameRecursively(transform, "barrel");
         blast = Utils.FindChildByNameRecursively(transform, "blast");
         playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
@@ -52,7 +52,7 @@ public class TankController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movingObject.Move(leftStickInput, speed, ref jitteryLocation, tankSprites);
+        movingObject.MoveJittery(leftStickInput, speed, ref jitteryLocation, sprites);
     }
 
     public void OnMove(UnityEngine.InputSystem.InputValue value)
